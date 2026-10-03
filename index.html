@@ -93,9 +93,10 @@
            ========================================================================== */
         #envelope-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            /* Fondo limpio desde assets */
+            /* Fondo limpio desde assets (Sin extender/cortar imagen) */
             background: url('assets/fondo.jpg') no-repeat center center;
-            background-size: cover;
+            background-size: contain; 
+            background-color: var(--bg-color);
             z-index: 9999; display: flex; flex-direction: column;
             align-items: center; justify-content: center;
             transition: opacity 1.2s ease, visibility 1.2s ease;
@@ -212,6 +213,47 @@
         .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(59, 77, 53, 0.3); }
 
         /* ==========================================================================
+           BLOQUES OLIVO PREMIUM (INTERCALADOS)
+           ========================================================================== */
+        .olive-elegant {
+            background: linear-gradient(135deg, #2E3B29 0%, #3B4D35 50%, #4A5D23 100%);
+            color: var(--white); width: calc(100% + 60px); margin: 30px -30px;
+            padding: 50px 30px; position: relative; overflow: hidden;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.5), 0 15px 30px rgba(0,0,0,0.15); 
+            z-index: 2;
+        }
+        /* Brillo cruzado mágico */
+        .olive-elegant::after {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(226, 209, 184, 0.1) 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(30deg); animation: shimmer-bg 6s infinite linear; pointer-events: none;
+        }
+        @keyframes shimmer-bg {
+            0% { transform: rotate(30deg) translateY(-50%); }
+            100% { transform: rotate(30deg) translateY(50%); }
+        }
+        .olive-elegant h2 {
+            background: linear-gradient(110deg, var(--white) 35%, var(--gold-light) 50%, var(--white) 65%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shineSweep 5s linear infinite;
+        }
+        .olive-elegant p { color: var(--white); }
+        .olive-elegant .divider { color: var(--gold-light); }
+        .olive-elegant .divider::before, .olive-elegant .divider::after { background-color: var(--gold-light); }
+
+        /* Ajustes de Itinerario dentro de Olive Elegant */
+        .olive-elegant .timeline-section::before { background-color: rgba(226, 209, 184, 0.4); }
+        .olive-elegant .timeline-icon { background-color: var(--main-dark); color: var(--gold-light); border-color: var(--gold-light); box-shadow: 0 0 0 6px #374831; }
+        .olive-elegant .timeline-time { color: var(--gold-light); }
+        .olive-elegant .timeline-event { color: var(--white); }
+        
+        /* Ajustes de Contador dentro de Olive Elegant */
+        .olive-elegant #countdown-timer span { color: var(--gold-light); }
+        .olive-elegant #countdown-timer b { color: var(--white); font-size: 2.2rem; }
+
+        /* ==========================================================================
            BLOQUES ESPECÍFICOS
            ========================================================================== */
         /* Hero */
@@ -246,12 +288,6 @@
         .calendar-day { padding: 8px 0; border-radius: 50%; transition: all 0.3s;}
         .calendar-day.highlight { background: linear-gradient(135deg, var(--main-dark), var(--main-light)); color: var(--white); font-weight: bold; box-shadow: 0 0 15px rgba(59,77,53,0.4);}
 
-        /* Contador */
-        .timer-block { width: 100%; margin: 30px 0; padding: 25px 0; border-top: 1px solid rgba(184, 156, 114, 0.4); border-bottom: 1px solid rgba(184, 156, 114, 0.4); position: relative; z-index: 2;}
-        #countdown-timer { display: flex; justify-content: space-evenly; gap: 10px; font-family: var(--font-sans); }
-        #countdown-timer span { display: flex; flex-direction: column; font-size: 0.7rem; letter-spacing: 2px; color: var(--text-color); align-items: center;}
-        #countdown-timer b { font-size: 2rem; color: var(--main-dark); font-weight: 400; font-family: var(--font-title); line-height: 1; margin-bottom: 5px;}
-
         /* Mapas y Ubicaciones */
         .venue-card { width: 100%; margin-bottom: 40px; background: var(--bg-color); padding: 30px 20px; border-radius: 4px; box-shadow: 0 5px 20px rgba(0,0,0,0.04); border: 1px solid rgba(184, 156, 114, 0.2); transition: transform 0.4s; position: relative; z-index: 2;}
         .venue-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
@@ -263,8 +299,8 @@
         .map-iframe-container { width: 100%; height: 220px; overflow: hidden; margin-bottom: 20px; border: 1px solid rgba(184,156,114,0.3); border-radius: 4px;}
         .map-iframe-container iframe { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Timeline / Programa */
-        .timeline-section { width: 100%; padding: 10px; position: relative; text-align: left; margin-bottom: 40px; z-index: 2;}
+        /* Timeline / Programa base */
+        .timeline-section { width: 100%; padding: 10px; position: relative; text-align: left; margin-bottom: 20px; z-index: 2;}
         .timeline-section::before { content: ''; position: absolute; left: 24px; top: 10px; bottom: 10px; width: 1px; background-color: rgba(184, 156, 114, 0.4); z-index: 0; }
         .timeline-item { display: flex; align-items: flex-start; margin-bottom: 35px; position: relative; z-index: 1; }
         .timeline-icon {
@@ -279,37 +315,18 @@
         /* Hospedaje */
         .hotel-card {
             width: 100%; background: var(--bg-color);
-            border-radius: 4px; overflow: hidden; margin-bottom: 20px; 
+            border-radius: 4px; overflow: hidden; margin-bottom: 25px; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.04); border: 1px solid rgba(184, 156, 114, 0.2);
             transition: transform 0.3s ease; position: relative; z-index: 2;
         }
         .hotel-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .hotel-img-wrapper { width: 100%; height: 180px; overflow: hidden; border-bottom: 1px solid rgba(184, 156, 114, 0.2); }
+        .hotel-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .hotel-card:hover .hotel-img { transform: scale(1.05); }
         .hotel-content { padding: 25px; text-align: center; }
         .hotel-content h4 { font-family: var(--font-title); font-size: 1.4rem; color: var(--main-dark); margin-bottom: 5px; }
         .hotel-btn { width: 100%; padding: 12px; font-size: 0.75rem; background: transparent; color: var(--main-dark); border: 1px solid var(--main-dark); box-shadow: none;}
         .hotel-btn:hover { background: var(--main-dark); color: var(--white); }
-
-        /* Código de Vestimenta (Estética Olivo Premium) */
-        .olive-elegant {
-            background: linear-gradient(135deg, #2E3B29 0%, #3B4D35 50%, #4A5D23 100%);
-            color: var(--white); width: calc(100% + 60px); margin: 0 -30px 40px -30px;
-            padding: 50px 30px; position: relative; overflow: hidden;
-            box-shadow: inset 0 0 50px rgba(0,0,0,0.5), 0 15px 30px rgba(0,0,0,0.15); 
-            z-index: 2;
-        }
-        /* Brillo cruzado en la sección olivo */
-        .olive-elegant::after {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(226, 209, 184, 0.1) 50%, rgba(255,255,255,0) 100%);
-            transform: rotate(30deg); animation: shimmer-bg 6s infinite linear; pointer-events: none;
-        }
-        @keyframes shimmer-bg {
-            0% { transform: rotate(30deg) translateY(-50%); }
-            100% { transform: rotate(30deg) translateY(50%); }
-        }
-
-        .dress-code-title { font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 4px; margin-bottom: 15px; color: var(--gold-light); font-weight: 500; position: relative; z-index: 2;}
-        .dress-code-main { font-family: var(--font-title); font-size: 3rem; margin-bottom: 10px; line-height: 1.1; color: var(--white); position: relative; z-index: 2;}
 
         /* Restricción Niños */
         .no-kids-block {
@@ -420,13 +437,10 @@
             animation: shineSweep 5s linear infinite;
         }
 
-        .dress-code-main {
-            background: linear-gradient(110deg, var(--white) 35%, var(--gold-light) 50%, var(--white) 65%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shineSweep 5s linear infinite;
+        .dress-code-title {
+            font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 4px; margin-bottom: 15px; font-weight: 500;
         }
+        .dress-code-main { font-family: var(--font-title); font-size: 3rem; margin-bottom: 10px; line-height: 1.1; color: var(--white); position: relative; z-index: 2;}
 
         @keyframes shineSweep {
             0% { background-position: 200% center; }
@@ -436,7 +450,7 @@
         @media (max-width: 992px) {
             .invitation-container { grid-template-columns: 1fr; }
             .column:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(184, 156, 114, 0.3); }
-            .olive-elegant { width: calc(100% + 60px); margin: 0 -30px 40px -30px; }
+            .olive-elegant { width: calc(100% + 60px); margin: 30px -30px 40px -30px; }
             .names-container span.name { font-size: 3.2rem; }
         }
     </style>
@@ -478,7 +492,6 @@
             
             <!-- ================= COLUMNA 1: HERO, PADRES Y FECHA ================= -->
             <div class="column">
-                <!-- Efecto de chispas en el fondo -->
                 <div class="sparkle-container" id="sparkles-1"></div>
 
                 <p class="intro-text anim-el fade-in-up">Nuestra Boda</p>
@@ -535,21 +548,21 @@
                         <div class="calendar-day">25</div><div class="calendar-day">26</div><div class="calendar-day">27</div><div class="calendar-day">28</div><div class="calendar-day">29</div><div class="calendar-day">30</div><div class="calendar-day">31</div>
                     </div>
                 </div>
-                
-                <!-- FOTO 2 -->
-                <div class="photo-wrapper anim-el fade-in-up" style="transition-delay: 0.3s; margin-top: 25px;">
-                    <img src="assets/2.jpg" class="clickable-photo" onclick="openLightbox(this.src)" alt="Novios Mágico">
-                </div>
 
-                <!-- CONTADOR EDITORIAL -->
-                <div class="timer-block anim-el fade-in-up" style="transition-delay: 0.4s;">
-                    <p style="font-family: var(--font-script); font-size: 2rem; text-align: center; margin-bottom: 15px; color: var(--gold);">Faltan</p>
+                <!-- CONTADOR EDITORIAL OLIVO -->
+                <div class="olive-elegant anim-el fade-in-up" style="margin-top: 40px; padding: 40px 30px;">
+                    <p style="font-family: var(--font-script); font-size: 2.6rem; text-align: center; margin-bottom: 15px; color: var(--gold-light);">Faltan</p>
                     <div id="countdown-timer">
                         <span><b id="dias">00</b> DÍAS</span>
                         <span><b id="horas">00</b> HRS</span>
                         <span><b id="minutos">00</b> MIN</span>
                         <span><b id="segundos">00</b> SEG</span>
                     </div>
+                </div>
+                
+                <!-- FOTO 2 -->
+                <div class="photo-wrapper anim-el fade-in-up" style="transition-delay: 0.3s; margin-top: 15px;">
+                    <img src="assets/2.jpg" class="clickable-photo" onclick="openLightbox(this.src)" alt="Novios Mágico">
                 </div>
 
                 <button onclick="downloadICS()" class="btn anim-el fade-in-up" style="width: 100%; transition-delay: 0.5s;"><i class="fa-regular fa-calendar-plus"></i> AGREGAR AL CALENDARIO</button>
@@ -574,38 +587,41 @@
                     <a href="https://maps.app.goo.gl/FTj7kz79xKyjy24z8" target="_blank" class="btn" style="width: 100%;"><i class="fa-solid fa-location-dot"></i> UBICACIÓN EXACTA</a>
                 </div>
 
-                <h2 class="anim-el fade-in-up" style="font-size: 2rem; margin-top: 30px;">ITINERARIO</h2>
-                <div class="divider anim-el fade-in-up"><i class="fa-regular fa-clock" style="font-size: 0.9rem;"></i></div>
+                <!-- ITINERARIO OLIVO -->
+                <div class="olive-elegant anim-el fade-in-up" style="padding: 40px 30px;">
+                    <h2>ITINERARIO</h2>
+                    <div class="divider"><i class="fa-regular fa-clock"></i></div>
 
-                <div class="timeline-section">
-                    <div class="timeline-item anim-el fade-in-left" style="transition-delay: 0.1s;">
-                        <div class="timeline-icon"><i class="fa-solid fa-door-open"></i></div>
-                        <div class="timeline-content"><div class="timeline-time">16:00 HRS</div><div class="timeline-event">Llegada de Invitados</div></div>
-                    </div>
-                    <div class="timeline-item anim-el fade-in-left" style="transition-delay: 0.2s;">
-                        <div class="timeline-icon"><i class="fa-solid fa-file-signature"></i></div>
-                        <div class="timeline-content"><div class="timeline-time">17:00 HRS</div><div class="timeline-event">Ceremonia Civil</div></div>
-                    </div>
-                    <div class="timeline-item anim-el fade-in-left" style="transition-delay: 0.3s;">
-                        <div class="timeline-icon"><i class="fa-solid fa-camera"></i></div>
-                        <div class="timeline-content"><div class="timeline-time">18:00 HRS</div><div class="timeline-event">Sesión de Fotos</div></div>
-                    </div>
-                    <div class="timeline-item anim-el fade-in-left" style="transition-delay: 0.4s;">
-                        <div class="timeline-icon"><i class="fa-solid fa-martini-glass-citrus"></i></div>
-                        <div class="timeline-content"><div class="timeline-time">18:30 HRS</div><div class="timeline-event">Recepción</div></div>
-                    </div>
-                    <div class="timeline-item anim-el fade-in-left" style="transition-delay: 0.5s;">
-                        <div class="timeline-icon"><i class="fa-solid fa-utensils"></i></div>
-                        <div class="timeline-content"><div class="timeline-time">19:00 HRS</div><div class="timeline-event">Cena y Brindis</div></div>
-                    </div>
-                    <div class="timeline-item anim-el fade-in-left" style="transition-delay: 0.6s;">
-                        <div class="timeline-icon"><i class="fa-solid fa-music"></i></div>
-                        <div class="timeline-content"><div class="timeline-time">20:00 HRS</div><div class="timeline-event">Baile y Celebración</div></div>
+                    <div class="timeline-section">
+                        <div class="timeline-item anim-el fade-in-left" style="transition-delay: 0.1s;">
+                            <div class="timeline-icon"><i class="fa-solid fa-door-open"></i></div>
+                            <div class="timeline-content"><div class="timeline-time">16:00 HRS</div><div class="timeline-event">Llegada de Invitados</div></div>
+                        </div>
+                        <div class="timeline-item anim-el fade-in-left" style="transition-delay: 0.2s;">
+                            <div class="timeline-icon"><i class="fa-solid fa-file-signature"></i></div>
+                            <div class="timeline-content"><div class="timeline-time">17:00 HRS</div><div class="timeline-event">Ceremonia Civil</div></div>
+                        </div>
+                        <div class="timeline-item anim-el fade-in-left" style="transition-delay: 0.3s;">
+                            <div class="timeline-icon"><i class="fa-solid fa-camera"></i></div>
+                            <div class="timeline-content"><div class="timeline-time">18:00 HRS</div><div class="timeline-event">Sesión de Fotos</div></div>
+                        </div>
+                        <div class="timeline-item anim-el fade-in-left" style="transition-delay: 0.4s;">
+                            <div class="timeline-icon"><i class="fa-solid fa-martini-glass-citrus"></i></div>
+                            <div class="timeline-content"><div class="timeline-time">18:30 HRS</div><div class="timeline-event">Recepción</div></div>
+                        </div>
+                        <div class="timeline-item anim-el fade-in-left" style="transition-delay: 0.5s;">
+                            <div class="timeline-icon"><i class="fa-solid fa-utensils"></i></div>
+                            <div class="timeline-content"><div class="timeline-time">19:00 HRS</div><div class="timeline-event">Cena y Brindis</div></div>
+                        </div>
+                        <div class="timeline-item anim-el fade-in-left" style="transition-delay: 0.6s;">
+                            <div class="timeline-icon"><i class="fa-solid fa-music"></i></div>
+                            <div class="timeline-content"><div class="timeline-time">20:00 HRS</div><div class="timeline-event">Baile y Celebración</div></div>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- FOTO 3 -->
-                <div class="photo-wrapper anim-el fade-in-up" style="transition-delay: 0.2s;">
+                <div class="photo-wrapper anim-el fade-in-up" style="transition-delay: 0.2s; margin-top: 10px;">
                     <img src="assets/3.jpg" class="clickable-photo" onclick="openLightbox(this.src)" alt="Momento Romántico">
                 </div>
 
@@ -615,6 +631,9 @@
 
                 <!-- 1. Hotel Blue City -->
                 <div class="hotel-card anim-el fade-in-up" style="transition-delay: 0.1s;">
+                    <div class="hotel-img-wrapper">
+                        <img src="assets/hotel1.jpg" alt="Hotel Blue City" class="hotel-img">
+                    </div>
                     <div class="hotel-content">
                         <h4>Hotel Blue City</h4>
                         <div style="display: flex; gap: 10px; margin-top: 15px;">
@@ -626,6 +645,9 @@
 
                 <!-- 2. Hotel Central Teziutlán -->
                 <div class="hotel-card anim-el fade-in-up" style="transition-delay: 0.2s;">
+                    <div class="hotel-img-wrapper">
+                        <img src="assets/hotel2.jpg" alt="Hotel Central Teziutlán" class="hotel-img">
+                    </div>
                     <div class="hotel-content">
                         <h4>Hotel Central Teziutlán</h4>
                         <div style="display: flex; gap: 10px; margin-top: 15px;">
@@ -637,6 +659,9 @@
 
                 <!-- 3. Hotel Misión Benjamín -->
                 <div class="hotel-card anim-el fade-in-up" style="transition-delay: 0.3s;">
+                    <div class="hotel-img-wrapper">
+                        <img src="assets/hotel3.jpg" alt="Hotel Misión Benjamín" class="hotel-img">
+                    </div>
                     <div class="hotel-content">
                         <h4>Hotel Misión Benjamín</h4>
                         <div style="display: flex; gap: 10px; margin-top: 15px;">
