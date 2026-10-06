@@ -39,9 +39,8 @@
             color: var(--text-color);
             font-family: var(--font-body);
             overflow-x: hidden;
-            /* Se mantiene la textura, pero con un color base sólido por si tarda en cargar */
             background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
-            font-size: 17px; /* Aumento general del tamaño base */
+            font-size: 17px; 
         }
 
         /* ==========================================================================
@@ -72,7 +71,6 @@
 
         @keyframes pulseText { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 
-        /* Efecto de destellos flotantes (Magia) */
         .sparkle-container {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none; overflow: hidden; z-index: 0;
@@ -90,14 +88,13 @@
             100% { transform: translateY(-60px) scale(0.8); opacity: 0; }
         }
 
-        /* Animación de flotación para íconos */
         @keyframes float-icon {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-6px); text-shadow: 0 10px 15px rgba(184,156,114,0.4); }
         }
 
         /* ==========================================================================
-           PANTALLA DEL SOBRE ANIMADO (OPTIMIZADO EN TIEMPOS)
+           PANTALLA DEL SOBRE ANIMADO
            ========================================================================== */
         #envelope-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
@@ -137,7 +134,7 @@
             position: absolute; top: 0; left: 0; width: 0; height: 0;
             border-left: 170px solid transparent; border-right: 170px solid transparent;
             border-top: 130px solid var(--white); transform-origin: top;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Más rápido */
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 4; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.08));
         }
 
@@ -173,7 +170,7 @@
         #audio-btn:hover { transform: scale(1.1); background-color: var(--main-dark); color: var(--gold-light); }
 
         /* ==========================================================================
-           ESTRUCTURA GENERAL (TRÍPTICO EDITORIAL)
+           ESTRUCTURA GENERAL
            ========================================================================== */
         #invitation-content {
             display: flex; justify-content: center; padding: 20px 10px;
@@ -218,7 +215,7 @@
         .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(59, 77, 53, 0.4); }
 
         /* ==========================================================================
-           BLOQUES OLIVO PREMIUM (INTERCALADOS)
+           BLOQUES OLIVO PREMIUM
            ========================================================================== */
         .olive-elegant {
             background: linear-gradient(135deg, #2E3B29 0%, #3B4D35 50%, #4A5D23 100%);
@@ -250,9 +247,8 @@
         .olive-elegant #countdown-timer b { color: var(--white); font-size: 2.5rem; }
 
         /* ==========================================================================
-           EFECTO DE BRILLO EN TEXTOS PRINCIPALES (CORREGIDO PARA NO PERDERSE)
+           EFECTO DE BRILLO
            ========================================================================== */
-        /* Brillo para fondos claros (Beige/Blanco) */
         h2:not(.olive-elegant h2):not(.dress-code-main), 
         .names-container span.name,
         .save-date-date {
@@ -263,7 +259,6 @@
             animation: shineSweep 4.5s linear infinite;
         }
 
-        /* Brillo para fondos oscuros (Olive Elegant) */
         .olive-elegant h2, .dress-code-main {
             background: linear-gradient(110deg, var(--gold-light) 30%, var(--white) 50%, var(--gold-light) 70%);
             background-size: 200% auto;
@@ -278,7 +273,7 @@
         }
 
         /* ==========================================================================
-           BLOQUES ESPECÍFICOS Y TAMAÑOS DE LETRA AUMENTADOS
+           BLOQUES ESPECÍFICOS
            ========================================================================== */
         .intro-text { font-family: var(--font-sans); font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; color: var(--main-light); font-weight: 500; position: relative; z-index: 2;}
         
@@ -288,13 +283,11 @@
         
         .welcome-phrase { font-family: var(--font-body); font-size: 1.1rem; line-height: 1.8; color: var(--text-color); margin: 15px 0 25px 0; font-style: italic; position: relative; z-index: 2;}
 
-        /* Padres en Manuscrita */
         .parents-section { margin: 30px 0; width: 100%; position: relative; z-index: 2;}
         .parents-group { margin-bottom: 30px; }
         .parents-group h4 { font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 2px; color: var(--gold); margin-bottom: 10px; text-transform: uppercase; font-weight: 600;}
         .parents-group p { font-family: var(--font-script); font-size: 2rem; line-height: 1.3; color: var(--main-dark); font-weight: 500;}
 
-        /* Calendario */
         .save-date-title { font-family: var(--font-sans); font-size: 0.95rem; letter-spacing: 3px; margin-top: 30px; margin-bottom: 5px; color: var(--main-light); font-weight: 600;}
         .save-date-date { font-family: var(--font-title); font-size: clamp(2.8rem, 6vw, 3.8rem); margin-bottom: 5px; white-space: nowrap; }
         
@@ -305,7 +298,6 @@
         .calendar-day { padding: 10px 0; border-radius: 50%; transition: all 0.3s;}
         .calendar-day.highlight { background: linear-gradient(135deg, var(--main-dark), var(--main-light)); color: var(--white); font-weight: bold; box-shadow: 0 0 15px rgba(59,77,53,0.5);}
 
-        /* Mapas y Ubicaciones */
         .venue-card { width: 100%; margin-bottom: 40px; background: var(--bg-color); padding: 35px 25px; border-radius: 4px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid rgba(184, 156, 114, 0.25); transition: transform 0.4s; position: relative; z-index: 2;}
         .venue-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
         .venue-icon { font-size: 2.8rem; color: var(--gold); margin-bottom: 20px; animation: float-icon 3s ease-in-out infinite; display: inline-block;}
@@ -316,7 +308,6 @@
         .map-iframe-container { width: 100%; height: 240px; overflow: hidden; margin-bottom: 20px; border: 1px solid rgba(184,156,114,0.3); border-radius: 4px;}
         .map-iframe-container iframe { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Timeline Base */
         .timeline-section { width: 100%; padding: 10px; position: relative; text-align: left; margin-bottom: 20px; z-index: 2;}
         .timeline-section::before { content: ''; position: absolute; left: 24px; top: 10px; bottom: 10px; width: 1px; background-color: rgba(184, 156, 114, 0.4); z-index: 0; }
         .timeline-item { display: flex; align-items: flex-start; margin-bottom: 35px; position: relative; z-index: 1; }
@@ -330,7 +321,6 @@
         .timeline-time { font-family: var(--font-sans); font-weight: 600; font-size: 1.05rem; color: var(--main-light); letter-spacing: 1px;}
         .timeline-event { font-family: var(--font-title); font-size: 1.4rem; color: var(--main-dark); margin-top: 4px; }
 
-        /* Hospedaje */
         .hotel-card {
             width: 100%; background: var(--bg-color);
             border-radius: 4px; overflow: hidden; margin-bottom: 30px; 
@@ -346,14 +336,11 @@
         .hotel-btn { width: 100%; padding: 14px; font-size: 0.85rem; background: transparent; color: var(--main-dark); border: 1px solid var(--main-dark); box-shadow: none;}
         .hotel-btn:hover { background: var(--main-dark); color: var(--white); }
 
-        /* Código de Vestimenta */
         .dress-code-title { font-family: var(--font-sans); font-size: 0.9rem; letter-spacing: 4px; margin-bottom: 15px; font-weight: 500; position: relative; z-index: 2;}
         .dress-code-main { font-family: var(--font-title); font-size: 3.5rem; margin-bottom: 15px; line-height: 1.1; position: relative; z-index: 2;}
 
-        .no-kids-block { background: transparent; padding: 25px; width: 100%; border-top: 1px solid rgba(184, 156, 114, 0.4); border-bottom: 1px solid rgba(184, 156, 114, 0.4); margin-bottom: 40px; position: relative; z-index: 2;}
         .qr-code { width: 160px; height: 160px; margin: 25px 0; border: 2px solid var(--gold); padding: 8px; background: #fff; position: relative; z-index: 2;}
 
-        /* Formulario Editorial */
         .editorial-form-box {
             width: 100%; background: var(--bg-color); padding: 40px 30px;
             border-radius: 4px; border: 1px solid rgba(184, 156, 114, 0.3); position: relative;
@@ -380,7 +367,6 @@
 
         .deadline-text { font-family: var(--font-sans); font-size: 0.75rem; color: var(--text-color); text-align: center; margin-top: 25px; letter-spacing: 2px; font-weight: 600;}
 
-        /* Galería */
         .photo-wrapper {
             position: relative; width: 100%; overflow: hidden; border-radius: 4px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.06); border: 1px solid rgba(184, 156, 114, 0.2); margin-bottom: 25px; z-index: 2;
@@ -404,9 +390,6 @@
         .lightbox-close { position: absolute; top: 25px; right: 25px; color: var(--gold-light); font-size: 2.5rem; cursor: pointer; background: none; border: none; z-index: 10001; transition: transform 0.3s, color 0.3s; }
         .lightbox-close:hover { transform: rotate(90deg); color: var(--white); }
 
-        /* ==========================================================================
-           FOOTER FIRMA INVYTIA (OLIVO Y BLANCO)
-           ========================================================================== */
         .footer-editorial {
             width: 100%; 
             background: linear-gradient(135deg, var(--main-dark), #2E3B29); 
@@ -470,7 +453,7 @@
     <div id="invitation-content">
         <div class="invitation-container">
             
-            <!-- ================= COLUMNA 1: HERO, PADRES Y FECHA ================= -->
+            <!-- ================= COLUMNA 1 ================= -->
             <div class="column">
                 <div class="sparkle-container" id="sparkles-1"></div>
 
@@ -489,7 +472,6 @@
                     <img src="assets/1.jpg" class="clickable-photo" onclick="openLightbox(this.src)" alt="Dulce y Uziel">
                 </div>
 
-                <!-- FRASE DE BIENVENIDA -->
                 <p class="welcome-phrase anim-el fade-in-up" style="transition-delay: 0.5s;">
                     "Con mucha ilusión queremos compartir contigo uno de los días más importantes de nuestras vidas. Después de tantos momentos compartidos, ha llegado el momento de celebrar nuestro amor y comenzar un nuevo capítulo juntos.<br><br>Será un honor contar con tu presencia y celebrar este día tan especial a nuestro lado."
                 </p>
@@ -502,7 +484,7 @@
                         <p>José Juan Romero Moralez<br>Eloína Luna Álvarez</p>
                     </div>
                     <div class="parents-group">
-                        <h4>Padres del Novio</h4>
+                        <h4>Madres del Novio</h4>
                         <p>Yolanda Díaz González<br>Petra González Huerta</p>
                     </div>
                 </div>
@@ -540,7 +522,6 @@
                     </div>
                 </div>
                 
-                <!-- FOTO 2 -->
                 <div class="photo-wrapper anim-el fade-in-up" style="transition-delay: 0.3s; margin-top: 15px;">
                     <img src="assets/2.jpg" class="clickable-photo" onclick="openLightbox(this.src)" alt="Novios Mágico">
                 </div>
@@ -548,14 +529,13 @@
                 <button onclick="downloadICS()" class="btn anim-el fade-in-up" style="width: 100%; transition-delay: 0.5s;"><i class="fa-regular fa-calendar-plus"></i> AGREGAR AL CALENDARIO</button>
             </div>
 
-            <!-- ================= COLUMNA 2: UBICACIONES, PROGRAMA Y HOSPEDAJE ================= -->
+            <!-- ================= COLUMNA 2 ================= -->
             <div class="column">
                 <div class="sparkle-container" id="sparkles-2"></div>
 
                 <h2 class="anim-el fade-in-up" style="font-size: 2.4rem; margin-bottom: 5px;">EL EVENTO</h2>
                 <div class="divider anim-el fade-in-up"><i class="fa-solid fa-map-location-dot" style="font-size: 1rem;"></i></div>
                 
-                <!-- CEREMONIA Y RECEPCIÓN JUNTAS -->
                 <div class="venue-card anim-el fade-in-up" style="transition-delay: 0.1s;">
                     <i class="fa-solid fa-champagne-glasses venue-icon"></i>
                     <p class="venue-type">CEREMONIA CIVIL Y RECEPCIÓN</p>
@@ -567,7 +547,6 @@
                     <a href="https://maps.app.goo.gl/FTj7kz79xKyjy24z8" target="_blank" class="btn" style="width: 100%;"><i class="fa-solid fa-location-dot"></i> UBICACIÓN EXACTA</a>
                 </div>
 
-                <!-- ITINERARIO OLIVO -->
                 <div class="olive-elegant anim-el fade-in-up" style="padding: 40px 30px;">
                     <h2 style="font-size: 2.4rem;">ITINERARIO</h2>
                     <div class="divider"><i class="fa-regular fa-clock"></i></div>
@@ -600,7 +579,6 @@
                     </div>
                 </div>
                 
-                <!-- FOTO 3 -->
                 <div class="photo-wrapper anim-el fade-in-up" style="transition-delay: 0.2s; margin-top: 10px;">
                     <img src="assets/3.jpg" class="clickable-photo" onclick="openLightbox(this.src)" alt="Momento Romántico">
                 </div>
@@ -609,7 +587,6 @@
                 <div class="divider anim-el fade-in-up"><i class="fa-solid fa-bed" style="font-size: 1rem;"></i></div>
                 <p class="anim-el fade-in-up" style="font-size: 1.1rem; margin-bottom: 25px; font-style: italic;">Sugerencias para tu comodidad:</p>
 
-                <!-- 1. Hotel Blue City -->
                 <div class="hotel-card anim-el fade-in-up" style="transition-delay: 0.1s;">
                     <div class="hotel-img-wrapper">
                         <img src="assets/hotel1.jpg" alt="Hotel Blue City" class="hotel-img">
@@ -623,7 +600,6 @@
                     </div>
                 </div>
 
-                <!-- 2. Hotel Central Teziutlán -->
                 <div class="hotel-card anim-el fade-in-up" style="transition-delay: 0.2s;">
                     <div class="hotel-img-wrapper">
                         <img src="assets/hotel2.jpg" alt="Hotel Central Teziutlán" class="hotel-img">
@@ -637,7 +613,6 @@
                     </div>
                 </div>
 
-                <!-- 3. Hotel Misión Benjamín -->
                 <div class="hotel-card anim-el fade-in-up" style="transition-delay: 0.3s;">
                     <div class="hotel-img-wrapper">
                         <img src="assets/hotel3.jpg" alt="Hotel Misión Benjamín" class="hotel-img">
@@ -652,43 +627,32 @@
                 </div>
             </div>
 
-            <!-- ================= COLUMNA 3: HISTORIA, DRESS CODE Y RSVP ================= -->
+            <!-- ================= COLUMNA 3 ================= -->
             <div class="column">
                 <div class="sparkle-container" id="sparkles-3"></div>
                 
-                <!-- GALERÍA (FOTOS 4, 5 y 6) -->
-                <h2 class="anim-el fade-in-up" style="font-size: 2.4rem; margin-bottom: 5px;">NUESTRA HISTORIA</h2>
+                <h2 class="anim-el fade-in-up" style="font-size: 2.4rem; margin-bottom: 5px;">NUESTROS MOMENTOS</h2>
                 <div class="divider anim-el fade-in-up"><i class="fa-solid fa-camera" style="font-size: 1rem;"></i></div>
                 <p class="anim-el fade-in-up" style="font-size: 1.1rem; font-style: italic; margin-bottom: 20px;">Coleccionando momentos inolvidables...</p>
 
                 <div class="gallery-grid anim-el fade-in-up">
                     <div class="photo-wrapper" style="grid-column: span 2;">
-                        <img src="assets/4.jpg" class="clickable-photo" style="height:250px;" onclick="openLightbox(this.src)" alt="Historia 1">
+                        <img src="assets/4.jpg" class="clickable-photo" style="height:250px;" onclick="openLightbox(this.src)" alt="Momento 1">
                     </div>
                     <div class="photo-wrapper">
-                        <img src="assets/5.jpg" class="clickable-photo" style="height:180px;" onclick="openLightbox(this.src)" alt="Historia 2">
+                        <img src="assets/5.jpg" class="clickable-photo" style="height:180px;" onclick="openLightbox(this.src)" alt="Momento 2">
                     </div>
                     <div class="photo-wrapper">
-                        <img src="assets/6.jpg" class="clickable-photo" style="height:180px;" onclick="openLightbox(this.src)" alt="Historia 3">
+                        <img src="assets/6.jpg" class="clickable-photo" style="height:180px;" onclick="openLightbox(this.src)" alt="Momento 3">
                     </div>
                 </div>
                 
-                <!-- DRESS CODE OLIVO MAGICO -->
                 <div class="olive-elegant anim-el scale-in" style="margin-top: 30px;">
                     <p class="dress-code-title">CÓDIGO DE VESTIMENTA</p>
                     <h2 class="dress-code-main">Formal</h2>
                     <p style="font-size: 1.1rem; font-style: italic; opacity: 0.95; line-height: 1.7; margin-top: 15px;">Nos encantará verlos lucir espectaculares en esta noche tan mágica y especial para nosotros.</p>
                 </div>
 
-                <!-- No Niños -->
-                <div class="no-kids-block anim-el fade-in-up">
-                    <p style="font-size: 1.1rem; font-style: italic; line-height: 1.7; margin:0; text-align: center;">
-                        <i class="fa-solid fa-children" style="color: var(--gold); font-size: 2rem; display: block; margin-bottom: 15px; text-shadow: 0 0 10px rgba(184,156,114,0.4); animation: float-icon 3s ease-in-out infinite;"></i>
-                        Para que todos podamos disfrutar de una velada inolvidable, hemos decidido que nuestra boda sea un evento <b>exclusivamente para adultos</b>. Agradecemos profundamente su comprensión.
-                    </p>
-                </div>
-
-                <!-- Galería en Vivo -->
                 <h2 class="anim-el fade-in-up" style="font-size: 2.4rem; margin-top: 20px;">GALERÍA EN VIVO</h2>
                 <div class="divider anim-el fade-in-up"><i class="fa-solid fa-camera-retro" style="font-size: 1rem;"></i></div>
                 <p class="anim-el fade-in-up" style="font-size: 1.1rem; line-height: 1.7;">¡Queremos ver la boda a través de tus ojos! Escanea o haz clic para compartir tus fotos y videos.</p>
@@ -755,7 +719,7 @@
         </div>
     </div>
 
-    <!-- FOOTER EDITORIAL (AHORA EN VERDE OLIVO Y BLANCO) -->
+    <!-- FOOTER EDITORIAL -->
     <footer class="footer-editorial">
         <p>INVYTIA VIP DESIGN</p>
     </footer>
@@ -764,6 +728,63 @@
          SCRIPTS
          ========================================================================== -->
     <script>
+        // --- BASE DE DATOS INVITADOS PLATINUM ---
+        const listaInvitados = {
+            "1": { nombre: "José Juan Romero", pases: 2 },
+            "2": { nombre: "José Luis Romero", pases: 2 },
+            "3": { nombre: "Claudia Angelica Romero", pases: 3 },
+            "4": { nombre: "Marco Antonio Romero", pases: 4 },
+            "5": { nombre: "Juan José Romero", pases: 2 },
+            "6": { nombre: "Guadalupe Álvarez", pases: 2 },
+            "7": { nombre: "Eudolia Morales", pases: 2 },
+            "8": { nombre: "Aleida Luna", pases: 1 },
+            "9": { nombre: "Dolores Luna", pases: 5 },
+            "10": { nombre: "Araceli Luna", pases: 5 },
+            "11": { nombre: "Odalis Cruz", pases: 2 },
+            "12": { nombre: "Joana Luna Álvarez", pases: 1 },
+            "13": { nombre: "Delfino Luna Álvarez", pases: 1 },
+            "14": { nombre: "Bertha Romero", pases: 3 },
+            "15": { nombre: "Josefina Romero", pases: 2 },
+            "16": { nombre: "Elia Romero", pases: 2 },
+            "17": { nombre: "Fabiola De La Rosa", pases: 2 },
+            "18": { nombre: "Norma Janeli García Castillo", pases: 2 },
+            "19": { nombre: "Samanta Almeida", pases: 2 },
+            "20": { nombre: "Paulina Rugerio", pases: 1 },
+            "21": { nombre: "Luz Aragón", pases: 1 },
+            "22": { nombre: "Lucero Salvador", pases: 2 },
+            "23": { nombre: "Rayalberto Salvador", pases: 2 },
+            "24": { nombre: "Hugo Rosas", pases: 2 },
+            "25": { nombre: "Roberto Romero", pases: 3 },
+            "26": { nombre: "Óscar Romero", pases: 1 },
+            "27": { nombre: "Flor González", pases: 1 },
+            "28": { nombre: "Iván Bravo", pases: 2 },
+            "29": { nombre: "Yolanda Díaz González", pases: 2 },
+            "30": { nombre: "Raquel Montalvo", pases: 6 },
+            "31": { nombre: "Emilio Díaz González", pases: 6 },
+            "32": { nombre: "Maximino Díaz González", pases: 5 },
+            "33": { nombre: "Hermelinda Díaz González", pases: 4 },
+            "34": { nombre: "Paula Díaz González", pases: 4 },
+            "35": { nombre: "Joseline De La Cruz", pases: 2 },
+            "36": { nombre: "Karina Díaz Flores", pases: 2 },
+            "37": { nombre: "Edson Josué Espinoza Báez", pases: 1 },
+            "38": { nombre: "Andrés Baruc Carreón", pases: 2 },
+            "39": { nombre: "Diego López Reyes", pases: 1 },
+            "40": { nombre: "Carlos Alejo Salinas", pases: 2 },
+            "41": { nombre: "Blanca Salinas", pases: 2 },
+            "42": { nombre: "Angel Alejo Salinas", pases: 2 },
+            "43": { nombre: "Gildardo Hernández", pases: 2 },
+            "44": { nombre: "Ismael Luna", pases: 2 },
+            "45": { nombre: "Omar Garcia", pases: 1 },
+            "46": { nombre: "Erubiel Sánchez Montalvo", pases: 2 },
+            "47": { nombre: "Daniel Arriaga Juárez", pases: 1 },
+            "48": { nombre: "Miguel Ángel Jasso Olvera", pases: 3 },
+            "49": { nombre: "Gerardo Casquera", pases: 3 },
+            "50": { nombre: "Gloria Montalvo Montiel", pases: 4 },
+            "51": { nombre: "Rocío Montalvo Montiel", pases: 4 },
+            "52": { nombre: "Paul León Montalvo", pases: 2 },
+            "53": { nombre: "Uzziel León Montalvo", pases: 2 }
+        };
+
         // --- 1. GENERAR DESTELLOS MÁGICOS (CHISPAS) ---
         function createSparkles(containerId, count) {
             const container = document.getElementById(containerId);
@@ -806,7 +827,6 @@
                 audioIcon.classList.add('fa-pause');
             }).catch(e => console.log("Auto-play prevenido", e));
 
-            // Tiempos acelerados para mayor fluidez
             setTimeout(() => {
                 envelopeScreen.style.opacity = '0';
                 invitationContent.style.visibility = 'visible';
@@ -843,10 +863,9 @@
         // --- 3. WHATSAPP NÚMERO ---
         const telefonoWhatsApp = "522212660073"; 
 
-        // --- 4. INICIALIZACIÓN E INVYTIA PASES (PLATINUM) ---
+        // --- 4. INICIALIZACIÓN E INVYTIA PASES PLATINUM ---
         document.addEventListener("DOMContentLoaded", function() {
             
-            // Observer Animaciones Escalonadas VIP
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -857,17 +876,18 @@
             }, { threshold: 0.12 });
             document.querySelectorAll('.anim-el').forEach(el => observer.observe(el));
 
-            // Sistema de Pases Invytia (?p=n & ?invitado=Nombre)
+            // Sistema Platinum de Pases usando el ID de la URL
             const urlParams = new URLSearchParams(window.location.search);
-            let pases = urlParams.get('pases') || urlParams.get('p');
-            let invitado = urlParams.get('invitado');
+            const invId = urlParams.get('id');
 
-            if (pases) {
+            if (invId && listaInvitados[invId]) {
+                const invitado = listaInvitados[invId];
                 document.getElementById('paseSection').style.display = 'block';
-                document.getElementById('guestPassesDisplay').textContent = pases;
-                if (invitado) {
-                    document.getElementById('guestNameDisplay').textContent = invitado;
-                }
+                document.getElementById('guestPassesDisplay').textContent = invitado.pases;
+                document.getElementById('guestNameDisplay').textContent = invitado.nombre;
+                
+                // Rellena automáticamente el nombre en el formulario para evitar que escriban otro
+                document.getElementById('rsvpNombre').value = invitado.nombre;
             }
 
             // Countdown - 23 Oct 2026, 16:00 (Llegada)
@@ -899,19 +919,20 @@
             const nombre = document.getElementById('rsvpNombre').value.trim();
             const asistencia = document.getElementById('rsvpAsistencia').value;
             
-            const urlParams = new URLSearchParams(window.location.search);
-            let pases = urlParams.get('pases') || urlParams.get('p');
-            let invName = urlParams.get('invitado') || "Invitado";
-
-            let finalName = nombre ? nombre : (pases ? invName : "");
-
-            if(!finalName || !asistencia) { 
+            if(!nombre || !asistencia) { 
                 alert("Por favor, completa tu nombre y estado de asistencia."); 
                 return; 
             }
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const invId = urlParams.get('id');
+            let pasesTexto = "";
+
+            if (invId && listaInvitados[invId]) {
+                pasesTexto = `(Tengo asignados ${listaInvitados[invId].pases} lugares)`;
+            }
             
-            let pasesTexto = pases ? `(Tengo asignados ${pases} lugares)` : "";
-            let mensaje = `✨ Hola, soy *${finalName}* ${pasesTexto}.\n\nQuiero confirmar mi respuesta a la boda de Dulce y Uziel: *${asistencia}*\n\n`;
+            let mensaje = `✨ Hola, soy *${nombre}* ${pasesTexto}.\n\nQuiero confirmar mi respuesta a la boda de Dulce y Uziel: *${asistencia}*\n\n`;
 
             window.open(`https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`, '_blank');
         }
